@@ -18,7 +18,8 @@
 			   <!--This is where my CSS inputs my Background img-->
 
 				       <div class="row" id="game-title">
-				           <h1 class="title"> <img src="assets/images/pokemon.png"> RPG Game</h1>
+				           <h1 class="title"> <img src="assets/images/pokemon.png"> </h1>
+				           <h1 class="RPG"> RPG Game </h1>
 				       </div>
 
 			   <div class="container">
@@ -27,7 +28,7 @@
 			           <h2 class="cmc" class="push-left"> Choose your Pok&#233;mon</h2>
 			       </div>
 
-			       <div class="row">
+			       <div class="row" id="init-shown">
 
 			           <div class="col-xs-2" id="player0" onclick="characterClicked(0)">
 			               <img src="assets/images/umbreon.png" class="img-responsive" alt="Image">
@@ -48,14 +49,14 @@
 			       </div>
 
 			    	    <div class="row" id="yourchar">
-			    	        <h3 class="yc" class="push-left"> Your Character</h3> <span id="characterHealth">Character HP: 0</span>
+			    	        <h3 class="yc" class="push-left"> Your Character</h3> <span id="characterHealth">0</span>
 			    	    </div>
 
 			    	    <div class="row" id="enemytitle">
 			    	        <h2 class="eata" class="push-left"> Pok&#233;mons Available To Attack</h2>
 			    	    </div>
 
-			       <div class="row">
+			       <div class="row" id="init-hidden">
 
 			            <div class="col-xs-2" id="enemies0" onclick="enemyClicked(0)" style="display:none">
 			               <img src="assets/images/umbreon.png" class="img-responsive" alt="Image">
@@ -75,8 +76,8 @@
 
 
 			       </div>
-
-			     		 <div class="row" id="fightsection">
+					
+					 	<div class="row" id="fightsection">
 			     		     <h3 class="fs" class="push-left"> Fight Section</h3>
 			     		 </div>
 						 <br>
@@ -85,14 +86,16 @@
       					 <br>
       					 <br>
 
-			             <p id="message-attack">This is where the mssage for the attack will go</p>
+			             <p id="message-attack">This is where the message for the attack will go</p>
       				 	
 
 			             <div class="def" id="dfender">
 			                 <h3 class="fs" class="defender"> Defender</h3> <span id="enemyHealth"></span>
 			             </div>
 
-			       <div class="row">
+			      
+
+			       <div class="row" id="init-hidden">
 
 			           <div class="col-xs-2" id="defender0" style="display:none">
 			               <img src="assets/images/umbreon.png" class="img-responsive" alt="Image">

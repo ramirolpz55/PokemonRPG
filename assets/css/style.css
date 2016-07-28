@@ -30,3 +30,15 @@ body:before {
 	border: 7px solid orange;
 }
 
+.RPG {
+	text-align: center;
+
+}
+#characterHealth {
+	color: blue;
+	font-size: 35px;
+}
+#enemyHealth {
+	color: blue;
+	font-size: 35px;
+}

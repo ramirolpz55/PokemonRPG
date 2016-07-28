@@ -1,38 +1,63 @@
-var umbreon = {
+var umbreon;
+var doubleblade;
+var gastly;
+var reshiram;
+var characters;
+var chosenEnemies;
+var defender;
+var baseAttack;
+var defendersAlive;
+
+
+function initializeGame(){
+    umbreon = {
+    id: 0,
     name: 'umbreon',
-    hp: Math.floor((Math.random() * 100) + 1),
-    attack: 10,
+    hp: 150,
+    attack: 10
 };
 
-var doubleblade = {
+doubleblade = {
+    id: 1,
     name: 'doubleblade',
-    hp: Math.floor((Math.random() * 100) + 1),
-    attack: 20
+    hp: 125,
+    attack: 10
 };
 
-var gastly = {
+gastly = {
+    id: 2,
     name: 'gastly',
-    hp: Math.floor((Math.random() * 100) + 1),
-    attack: 25
+    hp: 80,
+    attack: 10
 };
 
-var reshiram = {
+reshiram = {
+    id: 3,
     name: 'reshiram',
-    hp: Math.floor((Math.random() * 100) + 1),
+    hp: 115,
     attack: 15
 };
 
-var characters = [umbreon, doubleblade, gastly, reshiram];
-var chosenEnemies = [];
-var currentCharacter;
-var defender;
-var baseAttack;
+defendersAlive = 3;
+characters = [umbreon, doubleblade, gastly, reshiram];
+chosenEnemies = [];
+currentCharacter = undefined;
+defender = undefined;
+baseAttack = undefined;
 
+$("#init-shown > div").fadeIn("slow");
+$("#init-hidden > div").fadeOut("slow");
+$("#characterHealth").text("Character Health: 0");
+$("#enemyHealth").text("Enemy Health: 0");
+}
+
+initializeGame();
+			
 // Player chooses his character and hides the remaing 3 which become enemies
 function characterClicked(characterIndex) {
     for (var i = 0; i < 4; i++) {
         if (characterIndex != i) {
-            $("#player" + i).hide();
+            $("#player" + i).fadeOut("slow");
         }
     }
 
@@ -42,26 +67,26 @@ function characterClicked(characterIndex) {
     baseAttack = currentCharacter.attack; // This sets the current attack for my character
 }
 
-//Here we are unhdiing the chracters that were not clciked in Choose Your Charatcer 
+//Here we are unhiding the chracters that were not clciked in Choose Your Charatcer 
 function unhideCharacters(characterIndex) {
     for (var i = 0; i < 4; i++) {
         if (characterIndex != i) {
-            $("#enemies" + i).show();
+            $("#enemies" + i).fadeIn("slow");
         }
     }
 }
 
 
-//Here a Defender is chosen and moved to the Defender DIV and the remaing are hidden in the EATA DIV. 
+//Here a Defender is chosen and moved to the Defender DIV and the remaining are hidden in the PATA DIV. 
 function enemyClicked(characterIndex) {
 
     if (!defender) {
         for (var i = 0; i < 4; i++) {
             if (characterIndex == i) {
-                $("#defender" + i).show();
-                $("#enemies" + characterIndex).hide();
+                $("#defender" + i).fadeIn("slow");
+                $("#enemies" + characterIndex).fadeOut("slow");
                 defender = characters[characterIndex];
-                    $("#enemyHealth").html("Enemy Health: " + defender.hp);
+                    $("#enemyHealth").text("Enemy Health: " + defender.hp);
 	
             }
         }
@@ -70,13 +95,14 @@ function enemyClicked(characterIndex) {
 
 }
 
-
 //This is to make the attack button work
 $("#attackbtn").click(function(){
 	if (defender !== undefined){
 	attack();
-	}
-	
+}
+    else {
+        alert("PLEASE CHOOSE A DEFENDER");
+    }
 })
 
 //Add a fucntion to the button where I attack first with given attack value and then have the defender 
@@ -84,37 +110,33 @@ $("#attackbtn").click(function(){
 
 function attack() {
 	currentCharacter.hp -= defender.attack;
-	// console.log(currentCharacter.hp);
-	defender.hp -= currentCharacter.attack;
-	// console.log(defender.hp);
-	currentCharacter.attack += baseAttack;
-	// console.log(currentCharacter.attack);
-	// Put if enemy goes below zero here.
+	//console.log(currentCharacter.hp);
+    defender.hp -= currentCharacter.attack;
+	//console.log(defender.hp);
+    currentCharacter.attack += baseAttack;
+
+	$("#enemyHealth").text("Enemy Health: " + defender.hp);
+    $("#characterHealth").text("Character Health: " + currentCharacter.hp);
+    //console.log(currentCharacter.attack);
+    //Add function if enemy goes below 0.
 
 
 
+    if (currentCharacter.hp <= 0){
+		alert("YOU LOSE-GAME OVER!");
+        initializeGame();
+	} 
+    else if(defender.hp <= 0){
+	   $("#defender" + defender.id).fadeOut("slow");
+       $("#enemyHealth").text("Enemy Health: 0");
+       defendersAlive --;
+       defender = undefined;
+   }
 
-
-
-
-
-
-
-
-
-
-
-	//This will take my character and subtract my attack power from defneders hp. 
-	//Then defender will do the same to me until one of us reaches <= 0 HP.
-	//If i die the game ends 
-	//If defender dies I will chose the next enemy and fight him with my same hp until one
-	//of us dies. if I die game is over if he dies i will fight th next defender if any. 
-	//Keeping track of who is alive who is dead and my hp and my attach goes up by some amount.
-	// If I win Alert you win if i lose alert GAME OVER. 
-
-	//Set a reset or play again fucntion or button. 
-
-	//check each time we hit attack if i am at 0 or if defender is at 0. 
+   if(defendersAlive == 0){
+        alert("YOU WIN!!!!!");
+        initializeGame();
+    }
 }
 
 
@@ -124,32 +146,38 @@ function attack() {
 
 
 
+	// This will take my character and subtract my attack power from defneders hp. 
+	// Then defender will do the same to me until one of us reaches <= 0 HP.
+	// If i die the game ends 
+	// If defender dies I will chose the next enemy and fight him with my same hp until one
+	// of us dies. if I die game is over if he dies i will fight th next defender if any. 
+	// Keeping track of who is alive who is dead and my hp and my attach goes up by some amount.
+	// If I win Alert you win if i lose alert GAME OVER. 
+	// Set a reset or play again fucntion or button. 
+	// check each time we hit attack if i am at 0 or if defender is at 0. 
+
+    // class Character {
+    //          "peter" 25 10
+    // constructor(name, hp, attack) {
+    //      this.name = name;
+    //      this.hp = hp;
+    //      this.attack = attack;
+    //  }   
+    // }
+
+    // var c1 = new Character("peter", 25, 10);
+
+    // console.log(c1.name); //peter
 
 
 
+    // function someFunction(characterIndex) {
+    //  //characterindex = 3
+    //  for (var ; i < )
 
-// class Character {
-// 	//			"peter" 25 10
-// 	constructor(name, hp, attack) {
-// 		this.name = name;
-// 		this.hp = hp;
-// 		this.attack = attack;
-// 	}	
-// }
+    // }
 
-// var c1 = new Character("peter", 25, 10);
-
-// console.log(c1.name); //peter
-
-
-
-// function someFunction(characterIndex) {
-// 	//characterindex = 3
-// 	for (var ; i < )
-
-// }
-
-/*psuedo code _______________________________________________
-//Have 4 characters in the initial div where they are clickable for player to chose 1 character.
-//once the player chooses his chratcer it stays in the CYC div and the remaing 3 become enemies and move to EATA
-//*/
+    /*psuedo code _______________________________________________
+    //Have 4 characters in the initial div where they are clickable for player to chose 1 character.
+    //once the player chooses his chratcer it stays in the CYC div and the remaing 3 become enemies and move to EATA
+    //*/
