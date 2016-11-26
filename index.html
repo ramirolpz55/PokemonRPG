@@ -1,133 +1,91 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Homework 4 Week 4</title>
 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pokemon RPG</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
 
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	</head>
-	<body>
-		
-			<div class="main-container">
+<body>
+    <div class="main-container">
+        <!--This is where my CSS inputs my Background img-->
+        <div class="row" id="game-title">
+            <h1 class="title"> <img src="assets/images/pokemon.png"> </h1>
+            <h1 class="RPG"> RPG Game </h1>
+        </div>
+        <div class="container">
+            <div class="row" id="choosemychar">
+                <h2 class="cmc" class="push-left"> Choose your Pok&#233;mon</h2>
+            </div>
+            <div class="row" id="init-shown">
+                <div class="col-xs-2" id="player0" onclick="characterClicked(0)">
+                    <img src="assets/images/umbreon.png" class="img-responsive" alt="Image">
+                </div>
+                <div class="col-xs-2" id="player1" onclick="characterClicked(1)">
+                    <img src="assets/images/doubleblade.png" class="img-responsive" alt="Image">
+                </div>
+                <div class="col-xs-2" id="player2" onclick="characterClicked(2)">
+                    <img src="assets/images/gastly.png" class="img-responsive" alt="Image">
+                </div>
+                <div class="col-xs-2" id="player3" onclick="characterClicked(3)">
+                    <img src="assets/images/reshiram.svg" class="img-responsive" alt="Image">
+                </div>
+            </div>
+            <div class="row" id="yourchar">
+                <h3 class="yc" class="push-left"> Your Character</h3> <span id="characterHealth">0</span>
+            </div>
+            <div class="row" id="enemytitle">
+                <h2 class="eata" class="push-left"> Pok&#233;mons Available To Attack</h2>
+            </div>
+            <div class="row" id="init-hidden">
+                <div class="col-xs-2" id="enemies0" onclick="enemyClicked(0)" style="display:none">
+                    <img src="assets/images/umbreon.png" class="img-responsive" alt="Image">
+                </div>
+                <div class="col-xs-2" id="enemies1" onclick="enemyClicked(1)" style="display:none">
+                    <img src="assets/images/doubleblade.png" class="img-responsive" alt="Image">
+                </div>
+                <div class="col-xs-2" id="enemies2" onclick="enemyClicked(2)" style="display:none">
+                    <img src="assets/images/gastly.png" class="img-responsive" alt="Image">
+                </div>
+                <div class="col-xs-2" id="enemies3" onclick="enemyClicked(3)" style="display:none">
+                    <img src="assets/images/reshiram.svg" class="img-responsive" alt="Image">
+                </div>
+            </div>
+            <div class="row" id="fightsection">
+                <h3 class="fs" class="push-left"> Fight Section</h3>
+            </div>
+            <br>
+            <button type="button" class="btn btn-danger" id="attackbtn">Attack</button>
+            <br>
+            <br>
+            <p id="message-attack"></p>
+            <div class="def" id="dfender">
+                <h3 class="fs" class="defender"> Defender</h3> <span id="enemyHealth"></span>
+            </div>
+            <div class="row" id="init-hidden">
+                <div class="col-xs-2" id="defender0" style="display:none">
+                    <img src="assets/images/umbreon.png" class="img-responsive" alt="Image">
+                </div>
+                <div class="col-xs-2" id="defender1" style="display:none">
+                    <img src="assets/images/doubleblade.png" class="img-responsive" alt="Image">
+                </div>
+                <div class="col-xs-2" id="defender2" style="display:none">
+                    <img src="assets/images/gastly.png" class="img-responsive" alt="Image">
+                </div>
+                <div class="col-xs-2" id="defender3" style="display:none">
+                    <img src="assets/images/reshiram.svg" class="img-responsive" alt="Image">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="assets/javascript/game.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
 
-			   <!--This is where my CSS inputs my Background img-->
-
-				       <div class="row" id="game-title">
-				           <h1 class="title"> <img src="assets/images/pokemon.png"> </h1>
-				           <h1 class="RPG"> RPG Game </h1>
-				       </div>
-
-			   <div class="container">
-
-			       <div class="row" id="choosemychar">
-			           <h2 class="cmc" class="push-left"> Choose your Pok&#233;mon</h2>
-			       </div>
-
-			       <div class="row" id="init-shown">
-
-			           <div class="col-xs-2" id="player0" onclick="characterClicked(0)">
-			               <img src="assets/images/umbreon.png" class="img-responsive" alt="Image">
-			           </div>
-
-			           <div class="col-xs-2" id="player1" onclick="characterClicked(1)">
-			              <img src="assets/images/doubleblade.png" class="img-responsive" alt="Image">
-			           </div>
-
-			           <div class="col-xs-2" id="player2" onclick="characterClicked(2)">
-			               <img src="assets/images/gastly.png" class="img-responsive" alt="Image">
-			           </div>
-
-			           <div class="col-xs-2" id="player3" onclick="characterClicked(3)">
-			               <img src="assets/images/reshiram.svg" class="img-responsive" alt="Image">
-			           </div>
-
-			       </div>
-
-			    	    <div class="row" id="yourchar">
-			    	        <h3 class="yc" class="push-left"> Your Character</h3> <span id="characterHealth">0</span>
-			    	    </div>
-
-			    	    <div class="row" id="enemytitle">
-			    	        <h2 class="eata" class="push-left"> Pok&#233;mons Available To Attack</h2>
-			    	    </div>
-
-			       <div class="row" id="init-hidden">
-
-			            <div class="col-xs-2" id="enemies0" onclick="enemyClicked(0)" style="display:none">
-			               <img src="assets/images/umbreon.png" class="img-responsive" alt="Image">
-			           </div>
-
-			           <div class="col-xs-2" id="enemies1" onclick="enemyClicked(1)" style="display:none">
-			               <img src="assets/images/doubleblade.png" class="img-responsive" alt="Image">
-			           </div>
-
-			           <div class="col-xs-2" id="enemies2" onclick="enemyClicked(2)" style="display:none">
-			              <img src="assets/images/gastly.png" class="img-responsive" alt="Image">
-			           </div>
-
-			           <div class="col-xs-2" id="enemies3" onclick="enemyClicked(3)" style="display:none">
-			               <img src="assets/images/reshiram.svg" class="img-responsive" alt="Image">
-			           </div>
-
-
-			       </div>
-					
-					 	<div class="row" id="fightsection">
-			     		     <h3 class="fs" class="push-left"> Fight Section</h3>
-			     		 </div>
-						 <br>
-
-			             <button type="button" class="btn btn-danger" id="attackbtn">Attack</button>
-      					 <br>
-      					 <br>
-
-			             <p id="message-attack">This is where the message for the attack will go</p>
-      				 	
-
-			             <div class="def" id="dfender">
-			                 <h3 class="fs" class="defender"> Defender</h3> <span id="enemyHealth"></span>
-			             </div>
-
-			      
-
-			       <div class="row" id="init-hidden">
-
-			           <div class="col-xs-2" id="defender0" style="display:none">
-			               <img src="assets/images/umbreon.png" class="img-responsive" alt="Image">
-			           </div>
-
-			           <div class="col-xs-2" id="defender1" style="display:none">
-			               <img src="assets/images/doubleblade.png" class="img-responsive" alt="Image">
-			           </div>
-
-			           <div class="col-xs-2" id="defender2" style="display:none">
-			               <img src="assets/images/gastly.png" class="img-responsive" alt="Image">
-			           </div>
-
-			           <div class="col-xs-2" id="defender3" style="display:none">
-			               <img src="assets/images/reshiram.svg" class="img-responsive" alt="Image">
-			           </div>
-
-			       </div>
-
-			   </div>
-			</div>
-
-
-
-	
-			
-	
-
-		
-		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="assets/javascript/game.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-	</body>
 </html>
