@@ -1,4 +1,4 @@
-# Pokemon RPG - A web based Javascript Pokemon RPG Game.  
+## Pokemon RPG - A web based Javascript Pokemon RPG Game.  
 
 A Web based Javascript/ HTML5/ CSS Pokemon RPG application that lets users pick a Pokemon to fight other Pokemon to the end.
 
