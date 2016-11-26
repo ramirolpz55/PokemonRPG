@@ -1,6 +1,6 @@
-# Pokemon RPG - A web based Javascript hangman game.  
+## Pokemon RPG - A web based Javascript Pokemon RPG Game.  
 
-A Web based Javascript/ HTML5/ CSS Hangman application that randomly generates a word for the user to guess.
+A Web based Javascript/ HTML5/ CSS Pokemon RPG application that lets users pick a Pokemon to fight other Pokemon to the end.
 
 ## Live Demo
 
@@ -34,5 +34,4 @@ A Web based Javascript/ HTML5/ CSS Hangman application that randomly generates a
 * CSS 
 
 ## License
-
-N/A
+N/A.
